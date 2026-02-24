@@ -8,11 +8,15 @@ export type Budget = 'free' | 'cheap' | 'moderate' | 'expensive';
 
 export interface WatchItem {
   id: string;
-  title: string;
-  titleCN: string;
+  titleEn: string;
+  titleCn: string;
   year: number;
   type: 'movie' | 'series';
   genre: string;
+  director: string;
+  cast: string[];
+  imdbUrl: string;
+  doubanUrl: string;
   mood: Mood[];
   tone: Tone[];
   vibe: string;
@@ -21,10 +25,15 @@ export interface WatchItem {
 
 export interface ListenItem {
   id: string;
-  title: string;
-  titleCN: string;
+  trackTitle: string;
+  trackTitleCn: string;
   artist: string;
+  album: string;
+  year: number;
   genre: string;
+  spotifyUrl?: string;
+  appleMusicUrl?: string;
+  youtubeMusicUrl?: string;
   mood: Mood[];
   tone: Tone[];
   vibe: string;
@@ -33,10 +42,16 @@ export interface ListenItem {
 
 export interface PlayItem {
   id: string;
-  title: string;
-  titleCN: string;
-  platform: string;
+  gameTitle: string;
+  gameTitleCn: string;
+  year: number;
   genre: string;
+  platforms: string[];
+  developer: string;
+  publisher: string;
+  metacriticUrl?: string;
+  steamUrl?: string;
+  ignUrl?: string;
   mood: Mood[];
   tone: Tone[];
   vibe: string;

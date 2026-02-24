@@ -100,8 +100,8 @@ function generateTimeline(
 
   slots.push({
     time: 'afternoon',
-    activity: `Listen to "${listen.title}" by ${listen.artist}`,
-    activityCN: `听${listen.titleCN} — ${listen.artist}`,
+    activity: `Listen to "${listen.trackTitle}" by ${listen.artist}`,
+    activityCN: `听${listen.trackTitleCn} — ${listen.artist}`,
     category: 'listen',
   });
 
@@ -109,8 +109,8 @@ function generateTimeline(
   if (playAfternoon) {
     slots.push({
       time: 'afternoon',
-      activity: `Play ${play.title}`,
-      activityCN: `玩${play.titleCN}`,
+      activity: `Play ${play.gameTitle}`,
+      activityCN: `玩${play.gameTitleCn}`,
       category: 'play',
     });
   }
@@ -123,23 +123,23 @@ function generateTimeline(
   });
   slots.push({
     time: 'evening',
-    activity: `Watch ${watch.title} (${watch.year})`,
-    activityCN: `看${watch.titleCN}（${watch.year}）`,
+    activity: `Watch ${watch.titleEn} (${watch.year})`,
+    activityCN: `看${watch.titleCn}（${watch.year}）`,
     category: 'watch',
   });
 
   if (!playAfternoon) {
     slots.push({
       time: 'latenight',
-      activity: `Late-night session of ${play.title}`,
-      activityCN: `来一局${play.titleCN}`,
+      activity: `Late-night session of ${play.gameTitle}`,
+      activityCN: `来一局${play.gameTitleCn}`,
       category: 'play',
     });
   } else {
     slots.push({
       time: 'latenight',
-      activity: `Wind down with "${listen.title}"`,
-      activityCN: `睡前听${listen.titleCN}`,
+      activity: `Wind down with "${listen.trackTitle}"`,
+      activityCN: `睡前听${listen.trackTitleCn}`,
       category: 'listen',
     });
   }

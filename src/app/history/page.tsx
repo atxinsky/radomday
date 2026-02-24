@@ -87,24 +87,72 @@ export default function HistoryPage() {
                     </div>
                   </div>
 
-                  {/* Grid of picks */}
-                  <div className="grid grid-cols-5 gap-2">
-                    {[
-                      { label: tr.watch, value: cn ? box.watch.titleCN : box.watch.title },
-                      { label: tr.listen, value: cn ? box.listen.titleCN : box.listen.title },
-                      { label: tr.play, value: cn ? box.play.titleCN : box.play.title },
-                      { label: tr.eat, value: cn ? box.eat.dishCN : box.eat.dish },
-                      { label: tr.wear, value: cn ? box.wear.styleCN : box.wear.style },
-                    ].map((item) => (
-                      <div key={item.label} className="text-center p-2 rounded-xl bg-sand-50">
-                        <div className="text-[10px] uppercase tracking-wider text-ink-muted mb-1">
-                          {item.label}
-                        </div>
+                  {/* Detailed picks */}
+                  <div className="space-y-3">
+                    {/* Watch */}
+                    <div className="flex items-start gap-3 p-2.5 rounded-xl bg-sand-50">
+                      <div className="text-[10px] uppercase tracking-wider text-ink-muted mt-0.5 w-8 shrink-0">
+                        {tr.watch}
+                      </div>
+                      <div className="flex-1 min-w-0">
                         <div className="text-xs font-medium text-ink truncate">
-                          {item.value}
+                          {cn ? box.watch.titleCn : box.watch.titleEn}
+                        </div>
+                        <div className="text-[11px] text-ink-muted truncate">
+                          {box.watch.director} · {box.watch.genre} · {box.watch.year}
                         </div>
                       </div>
-                    ))}
+                    </div>
+
+                    {/* Listen */}
+                    <div className="flex items-start gap-3 p-2.5 rounded-xl bg-sand-50">
+                      <div className="text-[10px] uppercase tracking-wider text-ink-muted mt-0.5 w-8 shrink-0">
+                        {tr.listen}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-medium text-ink truncate">
+                          {cn ? box.listen.trackTitleCn : box.listen.trackTitle}
+                        </div>
+                        <div className="text-[11px] text-ink-muted truncate">
+                          {box.listen.artist} · {box.listen.album} · {box.listen.year}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Play */}
+                    <div className="flex items-start gap-3 p-2.5 rounded-xl bg-sand-50">
+                      <div className="text-[10px] uppercase tracking-wider text-ink-muted mt-0.5 w-8 shrink-0">
+                        {tr.play}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-medium text-ink truncate">
+                          {cn ? box.play.gameTitleCn : box.play.gameTitle}
+                        </div>
+                        <div className="text-[11px] text-ink-muted truncate">
+                          {box.play.developer} · {box.play.platforms.join(', ')} · {box.play.year}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Eat + Wear in a row */}
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="flex items-start gap-2 p-2.5 rounded-xl bg-sand-50">
+                        <div className="text-[10px] uppercase tracking-wider text-ink-muted mt-0.5 shrink-0">
+                          {tr.eat}
+                        </div>
+                        <div className="text-xs font-medium text-ink truncate">
+                          {cn ? box.eat.dishCN : box.eat.dish}
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2 p-2.5 rounded-xl bg-sand-50">
+                        <div className="text-[10px] uppercase tracking-wider text-ink-muted mt-0.5 shrink-0">
+                          {tr.wear}
+                        </div>
+                        <div className="text-xs font-medium text-ink truncate">
+                          {cn ? box.wear.styleCN : box.wear.style}
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Fortune */}

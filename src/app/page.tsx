@@ -11,7 +11,7 @@ import { eatPool } from '@/data/eat';
 import { wearPool } from '@/data/wear';
 import { destinyLines } from '@/data/copywriting';
 import { Header } from '@/components/Header';
-import { DiceHero } from '@/components/DiceHero';
+import { DiceHero, DiceCubeMini } from '@/components/DiceHero';
 import { ResultView } from '@/components/ResultView';
 import { ShareCard } from '@/components/ShareCard';
 import { useLang } from '@/contexts/LangContext';
@@ -205,19 +205,7 @@ export default function Home() {
         ) : (
           <div className="space-y-10">
             {isRolling ? (
-              <div className="flex items-center justify-center py-24">
-                <div className="w-32 h-32 rounded-3xl bg-white border border-sand-200 dice-rolling flex items-center justify-center"
-                  style={{ perspective: '600px', transformStyle: 'preserve-3d' }}
-                >
-                  <svg viewBox="0 0 100 100" className="w-16 h-16">
-                    <circle cx="50" cy="50" r="8" fill="#1A1816" opacity="0.8" />
-                    <circle cx="25" cy="25" r="6" fill="#1A1816" opacity="0.6" />
-                    <circle cx="75" cy="25" r="6" fill="#1A1816" opacity="0.6" />
-                    <circle cx="25" cy="75" r="6" fill="#1A1816" opacity="0.6" />
-                    <circle cx="75" cy="75" r="6" fill="#1A1816" opacity="0.6" />
-                  </svg>
-                </div>
-              </div>
+              <DiceCubeMini />
             ) : (
               box && (
                 <>

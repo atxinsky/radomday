@@ -32,9 +32,15 @@ export function ShareCard({ box }: Props) {
       const text = [
         `${tr.shareTitle} ${box.date}`,
         '',
-        `${tr.watch}: ${cn ? box.watch.titleCN : box.watch.title}`,
-        `${tr.listen}: ${cn ? box.listen.titleCN : box.listen.title} — ${box.listen.artist}`,
-        `${tr.play}: ${cn ? box.play.titleCN : box.play.title}`,
+        `${tr.watch}: ${cn ? box.watch.titleCn : box.watch.titleEn} (${box.watch.year})`,
+        `  ${tr.director}: ${box.watch.director} | ${tr.cast}: ${box.watch.cast.slice(0, 2).join(', ')}`,
+        '',
+        `${tr.listen}: ${cn ? box.listen.trackTitleCn : box.listen.trackTitle} — ${box.listen.artist}`,
+        `  ${tr.album}: ${box.listen.album} (${box.listen.year})`,
+        '',
+        `${tr.play}: ${cn ? box.play.gameTitleCn : box.play.gameTitle} (${box.play.year})`,
+        `  ${tr.developer}: ${box.play.developer} | ${tr.platforms}: ${box.play.platforms.join(', ')}`,
+        '',
         `${tr.eat}: ${cn ? box.eat.dishCN : box.eat.dish}`,
         `${tr.wear}: ${cn ? box.wear.styleCN : box.wear.style}`,
         '',
@@ -46,11 +52,31 @@ export function ShareCard({ box }: Props) {
   }, [box, tr, cn]);
 
   const items = [
-    { label: tr.watch, value: cn ? box.watch.titleCN : box.watch.title },
-    { label: tr.listen, value: `${cn ? box.listen.titleCN : box.listen.title} — ${box.listen.artist}` },
-    { label: tr.play, value: cn ? box.play.titleCN : box.play.title },
-    { label: tr.eat, value: cn ? box.eat.dishCN : box.eat.dish },
-    { label: tr.wear, value: cn ? box.wear.styleCN : box.wear.style },
+    {
+      label: tr.watch,
+      value: cn ? box.watch.titleCn : box.watch.titleEn,
+      meta: `${box.watch.director} · ${box.watch.year}`,
+    },
+    {
+      label: tr.listen,
+      value: `${cn ? box.listen.trackTitleCn : box.listen.trackTitle} — ${box.listen.artist}`,
+      meta: `${box.listen.album} · ${box.listen.year}`,
+    },
+    {
+      label: tr.play,
+      value: cn ? box.play.gameTitleCn : box.play.gameTitle,
+      meta: `${box.play.developer} · ${box.play.year}`,
+    },
+    {
+      label: tr.eat,
+      value: cn ? box.eat.dishCN : box.eat.dish,
+      meta: cn ? box.eat.cuisineCN : box.eat.cuisine,
+    },
+    {
+      label: tr.wear,
+      value: cn ? box.wear.styleCN : box.wear.style,
+      meta: cn ? `${box.wear.topCN} + ${box.wear.bottomCN}` : `${box.wear.top} + ${box.wear.bottom}`,
+    },
   ];
 
   return (
@@ -71,12 +97,19 @@ export function ShareCard({ box }: Props) {
         {/* Items */}
         <div className="space-y-3">
           {items.map((item) => (
-            <div key={item.label} className="flex items-center gap-3 py-2 border-b border-sand-200/60 last:border-0">
-              <div className="text-[10px] uppercase tracking-[0.15em] text-ink-muted w-12 shrink-0">
-                {item.label}
+            <div key={item.label} className="py-2 border-b border-sand-200/60 last:border-0">
+              <div className="flex items-center gap-3">
+                <div className="text-[10px] uppercase tracking-[0.15em] text-ink-muted w-12 shrink-0">
+                  {item.label}
+                </div>
+                <div className="text-sm font-medium text-ink truncate">
+                  {item.value}
+                </div>
               </div>
-              <div className="text-sm font-medium text-ink truncate">
-                {item.value}
+              <div className="pl-12 mt-0.5">
+                <div className="text-[11px] text-ink-muted truncate">
+                  {item.meta}
+                </div>
               </div>
             </div>
           ))}

@@ -51,6 +51,16 @@ const translations = {
     signIn: 'Sign in',
     signOut: 'Sign out',
     guest: 'Guest',
+    // Metadata labels
+    director: 'Director',
+    cast: 'Cast',
+    artist: 'Artist',
+    album: 'Album',
+    developer: 'Developer',
+    publisher: 'Publisher',
+    platforms: 'Platforms',
+    genre: 'Genre',
+    year: 'Year',
   },
   cn: {
     appName: 'RadomDay',
@@ -102,6 +112,16 @@ const translations = {
     signIn: '登录',
     signOut: '退出',
     guest: '游客',
+    // Metadata labels
+    director: '导演',
+    cast: '主演',
+    artist: '艺人',
+    album: '专辑',
+    developer: '开发商',
+    publisher: '发行商',
+    platforms: '平台',
+    genre: '类型',
+    year: '年份',
   },
 } as const;
 
